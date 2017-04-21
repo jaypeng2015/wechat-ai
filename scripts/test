@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export NODE_ENV=test
+
+# --watch option
+if [ -n "$npm_config_watch" ]; then WATCH=" --watch"; else WATCH=""; fi
+
+# --coverage option
+if [ -n "$npm_config_coverage" ]; then COVERAGE=" --coverage"; else COVERAGE=""; fi
+
+jest --bail --i --forceExit $COVERAGE $WATCH -- $@

@@ -1,0 +1,2 @@
+# Ignore test files so eslint node/no-unpublished-require doesn't false positive
+*.test.js
