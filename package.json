@@ -1,0 +1,29 @@
+{
+  "name": "wechat-me",
+  "version": "0.0.1",
+  "description": "A wechat client with built in robot. 个人微信客户端+机器人。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaypeng2015/wechat-me.git"
+  },
+  "keywords": [
+    "wechat",
+    "weixin",
+    "electron",
+    "api.ai",
+    "chatbot"
+  ],
+  "author": "Jingwei Peng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaypeng2015/wechat-me/issues"
+  },
+  "homepage": "https://github.com/jaypeng2015/wechat-me#readme",
+  "engines": {
+    "node": ">=7.6.0"
+  }
+}
