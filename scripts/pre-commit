@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Run linting only on staged files
+echo 'Starting linting of staged files ...'
+npm run lint:staged
+echo 'Finished linting staged files.'

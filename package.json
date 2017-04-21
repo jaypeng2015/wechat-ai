@@ -4,8 +4,10 @@
   "description": "A wechat client with built in robot. 个人微信客户端+机器人。",
   "main": "index.js",
   "scripts": {
-    "start": "electron .",
     "lint": "scripts/lint",
+    "lint:staged": "lint-staged",
+    "pre-commit": "scripts/pre-commit",
+    "start": "electron .",
     "test": "scripts/test"
   },
   "repository": {
@@ -28,6 +30,9 @@
   "homepage": "https://github.com/jaypeng2015/wechat-me#readme",
   "engines": {
     "node": ">=7.6.0"
+  },
+  "lint-staged": {
+    "*.js": "eslint --ext .js"
   },
   "jest": {
     "coverageThreshold": {
@@ -54,6 +59,7 @@
     "eslint-plugin-node": "4.2.2",
     "eslint-plugin-unicorn": "2.1.1",
     "jest": "19.0.2",
+    "lint-staged": "3.4.0",
     "pre-commit": "1.2.2"
   },
   "dependencies": {
