@@ -1,11 +1,13 @@
 {
-  "extends": ["airbnb-base", "plugin:lodash/canonical", "plugin:node/recommended", "plugin:unicorn/recommended"],
-  "plugins": ["jest", "jsdoc", "lodash", "no-loops", "node", "unicorn", "eslint-comments"],
+  "extends": ["airbnb-base", "plugin:lodash/canonical", "plugin:node/recommended"],
+  "plugins": ["jest", "lodash", "no-loops", "node"],
   "env": {
     "node": true,
-    "jest": true
+    "jest": true,
+    "browser": true
   },
   "globals": {
+    "chrome": true
   },
   "settings": {
     "lodash": {
@@ -19,47 +21,24 @@
       "objects": "always-multiline",
       "functions": "never" // Node 6 doesn't like `(function(a,){ })(b,);`
     }],
-    "eslint-comments/disable-enable-pair": "error",
-    "eslint-comments/no-duplicate-disable": "error",
-    "eslint-comments/no-unlimited-disable": "error",
-    "eslint-comments/no-unused-disable": "error",
-    "eslint-comments/no-unused-enable": "error",
-    "eslint-comments/no-use": ["error", {"allow": [
-      "eslint-disable",
-      "eslint-disable-line",
-      "eslint-disable-next-line",
-      "eslint-enable"
-    ]}],
     "func-names": "error",
     "id-length": ["error", { "min": 2, "properties": "never", "exceptions": ["_", "i", "j"] }],
     "import/export": "error",
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "jest/no-identical-title": "error",
-    "jsdoc/check-param-names": "error",
-    "jsdoc/check-tag-names": "error",
-    "jsdoc/check-types": "error",
-    "jsdoc/newline-after-description": "error",
-    "jsdoc/require-description-complete-sentence": "error",
-    "jsdoc/require-hyphen-before-param-description": "error",
-    "jsdoc/require-param": "error",
-    "jsdoc/require-param-description": "error",
-    "jsdoc/require-param-type": "error",
-    "jsdoc/require-returns-description": "error",
-    "jsdoc/require-returns-type": "error",
     "lodash/chaining": ["error", "always"],
     "lodash/prefer-constant": ["error", false],
     "lodash/prefer-lodash-method": ["error", { "ignoreMethods": ["find", "startsWith"] }],
     "lodash/prefer-over-quantifier": "off",
     "max-len": ["error", 120],
-    "no-console": "error",
+    "no-console": 0,
     "no-loops/no-loops": "error",
     "no-mixed-operators": ["error", {"allowSamePrecedence": true}],
     "no-shadow": ["error", { "allow": ["cb", "err", "done", "resolve", "reject"] }],
     "node/exports-style": ["error", "module.exports"],
     "node/no-deprecated-api": "error",
     "node/no-missing-require": "error",
-    "object-curly-spacing": ["error", "always"],
-    "require-jsdoc": "error"
+    "object-curly-spacing": ["error", "always"]
   }
 }
