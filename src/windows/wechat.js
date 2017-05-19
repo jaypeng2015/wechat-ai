@@ -14,7 +14,7 @@ class WeChatWindow {
       width: 900,
       height: 760,
       webPreferences: {
-        nodeIntegration: false,
+        nodeIntegration: true,
         webSecurity: false,
         preload,
       },
@@ -30,7 +30,6 @@ class WeChatWindow {
         + 'script.type = "text/javascript";'
         + `script.text = "${_.replace(script.toString(), /\n/g, '')}";`
         + 'document.head.appendChild(script);';
-      console.log(javaStript)
       this.wechatWindow.webContents.executeJavaScript(javaStript);
     });
   }

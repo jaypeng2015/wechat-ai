@@ -1,10 +1,12 @@
 const { app } = require('electron');
 
 const WeChatWindow = require('./windows/wechat');
+const MessageBus = require('./message-bus');
 
 class WeChatMe {
   constructor() {
     this.wechatWindow = null;
+    this.messageBus = null;
   }
 
   checkInstance() {
@@ -25,6 +27,7 @@ class WeChatMe {
 
   initApp() {
     app.on('ready', () => {
+      this.createMessageBus();
       this.createWeChatWindow();
     });
 
@@ -43,6 +46,10 @@ class WeChatMe {
 
   createWeChatWindow() {
     this.wechatWindow = new WeChatWindow();
+  }
+
+  createMessageBus() {
+    this.messageBus = new MessageBus();
   }
 }
 
