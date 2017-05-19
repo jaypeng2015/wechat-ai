@@ -1,6 +1,6 @@
-# wechat-me 微信机器人
+# wechat-me 微信机器人 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
-A wechat client with built in robot. 个人微信客户端+机器人。
+A WeChat client with built in robot. 个人微信客户端+机器人。
 
 - Under development 开发中
 
@@ -16,5 +16,7 @@ A wechat client with built in robot. 个人微信客户端+机器人。
 
 ## Main features 主要功能点
  - [x] Uses https://wx.qq.com/ as the interface  使用[微信网页版](https://wx.qq.com/)作为用户界面
- - [ ] Analyses conversations from web page interactions 从页面交互中截取对话信息
+ - [x] Analyses conversations from `synccheck` requests 从`synccheck`同步请求中获取对话信息
  - [ ] Integrates with api.ai to make the bot smart  与[api.ai](https://api.ai/)集成，代理越成熟，则机器人越聪明
+ - [ ] Add settings to enable/disable auto-reply  增加自动回复`开启/关闭`设置
+ 
