@@ -4,23 +4,22 @@ const { readFileSync } = require('fs');
 const { BrowserWindow } = require('electron');
 
 class WeChatWindow {
-  constructor(preload) {
-    this.createWindow(preload);
+  constructor() {
+    this.createWindow();
     this.initWindowEvents();
   }
 
-  createWindow(preload) {
+  createWindow() {
     this.wechatWindow = new BrowserWindow({
       width: 900,
       height: 760,
       webPreferences: {
         nodeIntegration: true,
         webSecurity: false,
-        preload,
       },
     });
 
-    const script = readFileSync(path.join(__dirname, '../monkey-patch/http-request.js'));
+    const script = readFileSync(path.join(__dirname, '../monkey-patch/index.js'));
     this.wechatWindow.webContents.openDevTools();
     this.wechatWindow.loadURL('https://wx.qq.com');
     this.wechatWindow.webContents.on('dom-ready', () => {

@@ -27,8 +27,8 @@ class WeChatMe {
 
   initApp() {
     app.on('ready', () => {
-      this.createMessageBus();
       this.createWeChatWindow();
+      this.createMessageBus();
     });
 
     app.on('activate', () => {
@@ -49,7 +49,7 @@ class WeChatMe {
   }
 
   createMessageBus() {
-    this.messageBus = new MessageBus();
+    this.messageBus = new MessageBus(this.wechatWindow.wechatWindow.webContents);
   }
 }
 
