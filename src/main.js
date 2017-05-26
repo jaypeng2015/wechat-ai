@@ -1,12 +1,15 @@
-const { app } = require('electron');
+const { app, Menu, MenuItem } = require('electron');
 
-const WeChatWindow = require('./windows/wechat');
 const MessageBus = require('./message-bus');
+const WeChatWindow = require('./windows/wechat');
+const SettingsWindow = require('./windows/settings');
 
 class WeChatMe {
   constructor() {
     this.wechatWindow = null;
+    this.settingsWindow = null;
     this.messageBus = null;
+    this.menu = null;
   }
 
   checkInstance() {
@@ -28,6 +31,8 @@ class WeChatMe {
   initApp() {
     app.on('ready', () => {
       this.createWeChatWindow();
+      this.createSettingsWindow();
+      this.createSettingsMenu();
       this.createMessageBus();
     });
 
@@ -39,8 +44,8 @@ class WeChatMe {
       }
     });
 
-    app.on('will-quit', () => {
-      app.quit();
+    app.on('before-quit', () => {
+      this.settingsWindow.removeAllListeners('close');
     });
   }
 
@@ -49,7 +54,42 @@ class WeChatMe {
   }
 
   createMessageBus() {
-    this.messageBus = new MessageBus(this.wechatWindow.wechatWindow.webContents);
+    this.messageBus = new MessageBus(this.wechatWindow.window.webContents);
+  }
+
+  createSettingsMenu() {
+    const instance = this;
+    const template = [];
+    if (process.platform === 'darwin') {
+      template.unshift({
+        label: app.getName(),
+        submenu: [
+          { role: 'about' },
+          { type: 'separator' },
+          { role: 'hide' },
+          { type: 'separator' },
+          { role: 'quit' },
+        ],
+      });
+    }
+    this.menu = Menu.buildFromTemplate(template);
+    const settingsMenuItem = new MenuItem({
+      label: 'Settings',
+      submenu: [
+        {
+          label: 'Auto Reply',
+          click: () => {
+            instance.settingsWindow.show();
+          },
+        },
+      ],
+    });
+    this.menu.append(settingsMenuItem);
+    Menu.setApplicationMenu(this.menu);
+  }
+
+  createSettingsWindow() {
+    this.settingsWindow = new SettingsWindow(this.wechatWindow.window);
   }
 }
 

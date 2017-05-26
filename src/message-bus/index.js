@@ -2,6 +2,7 @@ const _ = require('lodash');
 const uuid = require('uuid');
 const { ipcMain } = require('electron');
 const apiAi = require('../api-ai');
+const settings = require('../settings');
 
 class MessageBus {
   constructor(webContents) {
@@ -14,6 +15,19 @@ class MessageBus {
     ipcMain.on('wechatMessage', (event, messages) => {
       const promises = _.map(messages, message => this.handleMessage(message));
       Promise.all(promises);
+    });
+
+    ipcMain.on('get contact', (event, contacts) => {
+      settings.syncContacts(contacts.MemberList);
+    });
+
+    ipcMain.on('loadAutoReplySettings', (event) => {
+      const contacts = settings.getContacts() || {};
+      event.sender.send('loadAutoReplySettingsReply', contacts);
+    });
+
+    ipcMain.on('udpateAutoReplySettings', (event, contact) => {
+      settings.updateContact(contact);
     });
   }
 
