@@ -15,8 +15,8 @@ class SettingsWindow {
         webSecurity: false,
       },
       parent,
-      modal: true,
-      show: true,
+      modal: false,
+      show: false,
       resizable: false,
     });
 
@@ -25,10 +25,8 @@ class SettingsWindow {
 
   initWindowEvents() {
     this.window.on('close', (event) => {
-      if (this.settingsWindow.isVisible()) {
-        event.preventDefault();
-        this.hide();
-      }
+      event.preventDefault();
+      this.hide();
     });
   }
 

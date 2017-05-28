@@ -37,9 +37,9 @@ class WeChatWindow {
   }
 
   initWindowEvents() {
-    this.window.once('close', () => {
-      const children = this.window.getChildWindows();
-      _.forEach(children, child => child.close());
+    this.window.once('close', (event) => {
+      event.preventDefault();
+      app.exit();
     });
   }
 
