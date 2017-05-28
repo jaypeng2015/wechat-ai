@@ -15,7 +15,5 @@ module.exports.syncContacts = (contacts) => {
 module.exports.getContacts = () => settings.get('contacts');
 
 module.exports.updateContact = (contact) => {
-  const localContacts = settings.get('contacts');
-  localContacts[contact.UserName] = contact;
-  settings.set('contacts', localContacts);
+  settings.set(`contacts.${contact.UserName}`, contact);
 };

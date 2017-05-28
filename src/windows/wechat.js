@@ -17,10 +17,13 @@ class WeChatWindow {
         nodeIntegration: true,
         webSecurity: false,
       },
+      show: false,
     });
 
     const script = readFileSync(path.join(__dirname, '../monkey-patch/index.js'));
-    this.window.webContents.openDevTools();
+    this.window.once('ready-to-show', () => {
+      this.window.show();
+    });
     this.window.loadURL('https://wx.qq.com');
     this.window.webContents.on('dom-ready', () => {
       // Monkey patch here
@@ -34,7 +37,7 @@ class WeChatWindow {
   }
 
   initWindowEvents() {
-    this.window.once('close', (event) => {
+    this.window.once('close', () => {
       const children = this.window.getChildWindows();
       _.forEach(children, child => child.close());
     });

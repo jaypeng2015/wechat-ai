@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const uuid = require('uuid');
-const { ipcMain } = require('electron');
+const { ipcMain, Menu } = require('electron');
 const apiAi = require('../api-ai');
 const settings = require('../settings');
 
@@ -19,6 +19,10 @@ class MessageBus {
 
     ipcMain.on('get contact', (event, contacts) => {
       settings.syncContacts(contacts.MemberList);
+      const menu = Menu.getApplicationMenu().items.find(item => item.label === 'Settings');
+      const subMenu = menu.submenu.items.find(sub => sub.label === 'Auto Reply');
+      subMenu.enable = true;
+      subMenu.enabled = true;
     });
 
     ipcMain.on('loadAutoReplySettings', (event) => {

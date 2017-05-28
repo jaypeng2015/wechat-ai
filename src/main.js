@@ -81,6 +81,7 @@ class WeChatMe {
           click: () => {
             instance.settingsWindow.show();
           },
+          enabled: false,
         },
       ],
     });
