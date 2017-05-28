@@ -19,7 +19,7 @@
       const editArea = document.getElementById('editArea');
       editArea.innerHTML = response.result.fulfillment.speech.replace('\\n', '<br>');
       angular.element(editArea).scope().editAreaCtn = editArea.innerHTML;
-      /*triggerKeyDown(editArea, 13);*/ /* send the message */
+      triggerKeyDown(editArea, 13); /* send the message */
     }, 1000);
   });
   const findMe = () => {

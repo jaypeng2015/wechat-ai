@@ -85,6 +85,12 @@ class MessageBus {
    */
   async handleMessage(message) {
     const { MsgType, Content, FromUserName } = message;
+    const contacts = settings.getContacts() || {};
+    const enabled = contacts[FromUserName];
+    if (!enabled) {
+      return;
+    }
+
     let sessionId = this.sessions[FromUserName];
     if (!sessionId) {
       sessionId = uuid.v4();
