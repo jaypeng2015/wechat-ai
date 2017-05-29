@@ -292,10 +292,12 @@ td.text-right {
 <body ng-app="wechat-me" ng-controller="ContactController">
   <table ng-if="contacts.length > 0" id="contactTable" style="responsive-table responsive-table-input-matrix">
     <tr>
+      <th class="text-left">Avatar</th>
       <th class="text-left">Name</th>
       <th class="text-left">On / Off</th>
     </tr>
     <tr ng-repeat="contact in contacts">
+      <td><img ng-src="https://wx.qq.com{{contact.HeadImgUrl}}" style="width: 46px;height: 44px"/></td>
       <td>{{contact.RemarkName || contact.NickName}}</td>
       <td>
         <div class="onoffswitch">
