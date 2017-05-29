@@ -27,7 +27,7 @@ class MessageBus {
 
     ipcMain.on('loadAutoReplySettings', (event) => {
       const contacts = settings.getContacts() || {};
-      const array = _.values(contacts);
+      const array = _.orderBy(_.values(contacts), ['RemarkPYQuanPin', 'PYQuanPin']);
       event.sender.send('loadAutoReplySettingsReply', array);
     });
 
