@@ -27,11 +27,20 @@ class MessageBus {
 
     ipcMain.on('loadAutoReplySettings', (event) => {
       const contacts = settings.getContacts() || {};
-      event.sender.send('loadAutoReplySettingsReply', contacts);
+      const array = _.values(contacts);
+      event.sender.send('loadAutoReplySettingsReply', array);
     });
 
     ipcMain.on('udpateAutoReplySettings', (event, contact) => {
       settings.updateContact(contact);
+    });
+
+    ipcMain.on('getApiKey', (event) => {
+      event.sender.send('getApiKeyReply', settings.getApiKey());
+    });
+
+    ipcMain.on('setApiKey', (event, apiKey) => {
+      settings.setApiKey(apiKey);
     });
   }
 

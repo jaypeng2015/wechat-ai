@@ -1,6 +1,8 @@
 const apiAi = require('apiai');
+const settings = require('../settings');
 
-const app = apiAi('410d0e20d98d4e10a084ae91e3c8eb5d');
+const apiKey = settings.getApiKey() || 'b6220b38aec344a4a900baa48e663a65';
+const app = apiAi(apiKey);
 
 /**
  * Get response from api.ai which looks like:

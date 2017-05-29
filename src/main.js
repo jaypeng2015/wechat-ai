@@ -3,11 +3,13 @@ const { app, Menu, MenuItem } = require('electron');
 const MessageBus = require('./message-bus');
 const WeChatWindow = require('./windows/wechat');
 const SettingsWindow = require('./windows/settings');
+const ApiKeyWindow = require('./windows/api-key');
 
 class WeChatMe {
   constructor() {
     this.wechatWindow = null;
     this.settingsWindow = null;
+    this.apiKeyWindow = null;
     this.messageBus = null;
     this.menu = null;
   }
@@ -31,6 +33,7 @@ class WeChatMe {
   initApp() {
     app.on('ready', () => {
       this.createWeChatWindow();
+      this.createApiKeyWindow();
       this.createSettingsWindow();
       this.createSettingsMenu();
       this.createMessageBus();
@@ -83,6 +86,12 @@ class WeChatMe {
           },
           enabled: false,
         },
+        {
+          label: 'Api Key',
+          click: () => {
+            instance.apiKeyWindow.show();
+          },
+        },
       ],
     });
     this.menu.append(settingsMenuItem);
@@ -91,6 +100,10 @@ class WeChatMe {
 
   createSettingsWindow() {
     this.settingsWindow = new SettingsWindow(this.wechatWindow.window);
+  }
+
+  createApiKeyWindow() {
+    this.apiKeyWindow = new ApiKeyWindow(this.wechatWindow.window);
   }
 }
 

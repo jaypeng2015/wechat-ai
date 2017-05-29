@@ -17,3 +17,7 @@ module.exports.getContacts = () => settings.get('contacts');
 module.exports.updateContact = (contact) => {
   settings.set(`contacts.${contact.UserName}`, contact);
 };
+
+module.exports.getApiKey = () => settings.get('apiKey');
+
+module.exports.setApiKey = apiKey => settings.set('apiKey', apiKey);

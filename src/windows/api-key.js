@@ -1,6 +1,6 @@
 const { BrowserWindow } = require('electron');
 
-class SettingsWindow {
+class ApiKeyWindow {
   constructor(parent) {
     this.createWindow(parent);
     this.initWindowEvents();
@@ -8,8 +8,8 @@ class SettingsWindow {
 
   createWindow(parent) {
     this.window = new BrowserWindow({
-      width: 500,
-      height: 480,
+      width: 480,
+      height: 300,
       webPreferences: {
         nodeIntegration: true,
         webSecurity: false,
@@ -20,7 +20,7 @@ class SettingsWindow {
       resizable: false,
     });
 
-    this.window.loadURL(`file://${__dirname}/settings.html`);
+    this.window.loadURL(`file://${__dirname}/api-key.html`);
   }
 
   initWindowEvents() {
@@ -35,7 +35,7 @@ class SettingsWindow {
   }
 
   show() {
-    this.window.webContents.send('show');
+    this.window.webContents.send('show api key');
     this.window.show();
     this.window.focus();
   }
@@ -45,4 +45,4 @@ class SettingsWindow {
   }
 }
 
-module.exports = SettingsWindow;
+module.exports = ApiKeyWindow;

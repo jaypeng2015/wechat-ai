@@ -6,15 +6,16 @@
 <style>
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 body {
-  background-color: #ffffff;
-  font-family: "Roboto", helvetica, arial, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  text-rendering: optimizeLegibility;
-}
+		width: 100%;
+		height: 100%;
+		font-family: "helvetica neue", helvetica, arial, sans-serif;
+		font-size: 13px;
+		text-align: center;
+		background: #333 url('http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/low_contrast_linen.png');
+	}
 
 div.table-title {
-   display: block;
+  display: block;
   margin: auto;
   max-width: 600px;
   padding:5px;
@@ -276,11 +277,7 @@ td.text-right {
     $scope.init = () => {
       ipcRenderer.send('loadAutoReplySettings');
       ipcRenderer.on('loadAutoReplySettingsReply', (event, contacts) => {
-        $scope.contacts = contacts ? Object.values(contacts).sort((a, b) => {
-          const nameA = a.RemarkName || a.NickName;
-          const nameB = b.RemarkName || b.NickName;
-          return nameA.localeCompare(nameB);
-        }) : [];
+        $scope.contacts = contacts;
         $scope.$apply();
       });
     };
@@ -292,8 +289,8 @@ td.text-right {
 </script>
 </head>
 
-<body ng-app="wechat-me" ng-controller="ContactController" data-ng-init="init()">
-  <table ng-if="contacts.length > 0" id="contactTabel" style="responsive-table responsive-table-input-matrix">
+<body ng-app="wechat-me" ng-controller="ContactController">
+  <table ng-if="contacts.length > 0" id="contactTable" style="responsive-table responsive-table-input-matrix">
     <tr>
       <th class="text-left">Name</th>
       <th class="text-left">On / Off</th>
@@ -311,9 +308,6 @@ td.text-right {
       </td>
     </tr>
   </table>
-  <div style="text-align: center" >
-      <button type="button" ng-click="close()" class="button" >Close</button>
-  </div>
 </body>
 
 </html>
