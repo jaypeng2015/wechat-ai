@@ -1,6 +1,6 @@
-# wechat-me 微信机器人 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# wechat-ai 微信机器人 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
-A WeChat client with built in robot. 个人微信客户端+机器人。
+A WeChat client with built in robot integrated with [api.ai](https://api.ai). 个人微信客户端+机器人([api.ai](https://api.ai))。
 
 - Under development 开发中
 
@@ -8,8 +8,8 @@ A WeChat client with built in robot. 个人微信客户端+机器人。
 
 ## Getting Started 快速上手
 
- - git clone https://github.com/jaypeng2015/wechat-me
- - cd wechat-me
+ - git clone https://github.com/jaypeng2015/wechat-ai
+ - cd wechat-ai
  - nvm install
  - npm install -g yarn
  - yarn
