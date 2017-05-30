@@ -1,11 +1,11 @@
 const _ = require('lodash');
 const uuid = require('uuid');
 const { ipcMain, Menu } = require('electron');
-const apiAi = require('../api-ai');
-const settings = require('../settings');
 
 class MessageBus {
   constructor(webContents) {
+    this.settings = require('../settings'); // eslint-disable-line global-require
+    this.apiAi = require('../api-ai'); // eslint-disable-line global-require
     this.sessions = {};
     this.webContents = webContents;
     this.initiate();
@@ -18,7 +18,7 @@ class MessageBus {
     });
 
     ipcMain.on('get contact', (event, contacts) => {
-      settings.syncContacts(contacts.MemberList);
+      this.settings.syncContacts(contacts.MemberList);
       const menu = Menu.getApplicationMenu().items.find(item => item.label === 'Settings');
       const subMenu = menu.submenu.items.find(sub => sub.label === 'Auto Reply');
       subMenu.enable = true;
@@ -26,21 +26,21 @@ class MessageBus {
     });
 
     ipcMain.on('loadAutoReplySettings', (event) => {
-      const contacts = settings.getContacts() || {};
+      const contacts = this.settings.getContacts() || {};
       const array = _.orderBy(_.values(contacts), ['RemarkPYQuanPin', 'PYQuanPin']);
       event.sender.send('loadAutoReplySettingsReply', array);
     });
 
     ipcMain.on('udpateAutoReplySettings', (event, contact) => {
-      settings.updateContact(contact);
+      this.settings.updateContact(contact);
     });
 
     ipcMain.on('getApiKey', (event) => {
-      event.sender.send('getApiKeyReply', settings.getApiKey());
+      event.sender.send('getApiKeyReply', this.settings.getApiKey());
     });
 
     ipcMain.on('setApiKey', (event, apiKey) => {
-      settings.setApiKey(apiKey);
+      this.settings.setApiKey(apiKey);
     });
   }
 
@@ -94,7 +94,7 @@ class MessageBus {
    */
   async handleMessage(message) {
     const { MsgType, Content, FromUserName } = message;
-    const contacts = settings.getContacts() || {};
+    const contacts = this.settings.getContacts() || {};
     const enabled = contacts[FromUserName];
     if (!enabled) {
       return;
@@ -109,7 +109,7 @@ class MessageBus {
     let response;
     switch (MsgType) {
       case 1: // text message
-        response = await apiAi.request(Content, sessionId);
+        response = await this.apiAi.request(Content, sessionId);
         if (_.get(response, 'status.code') === 200) {
           this.webContents.send('reply text', {
             user: FromUserName,

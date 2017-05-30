@@ -1,14 +1,16 @@
 {
   "name": "wechat-ai",
+  "productName": "WeChat AI",
   "version": "0.0.1",
   "description": "A wechat client with built in robot. 个人微信客户端+机器人。",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
     "lint": "scripts/lint",
     "lint:staged": "lint-staged",
     "pre-commit": "scripts/pre-commit",
     "start": "electron src/main.js",
-    "test": "scripts/test"
+    "test": "scripts/test",
+    "build": "electron-packager . --out ./.output --packageManager yarn --overwrite true"
   },
   "repository": {
     "type": "git",
@@ -20,7 +22,8 @@
     "weixin",
     "electron",
     "api.ai",
-    "chatbot"
+    "chatbot",
+    "ai"
   ],
   "author": "Jingwei Peng",
   "license": "ISC",
@@ -48,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "electron-packager": "8.7.0",
     "eslint": "3.19.0",
     "eslint-config-airbnb-base": "11.1.3",
     "eslint-plugin-import": "2.2.0",
