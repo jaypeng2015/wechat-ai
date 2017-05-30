@@ -1,8 +1,8 @@
 {
   "name": "wechat-ai",
   "productName": "WeChat AI",
-  "version": "0.0.1",
-  "description": "A wechat client with built in robot. 个人微信客户端+机器人。",
+  "version": "1.0.0",
+  "description": "A WeChat client with built in robot. 个人微信客户端+机器人。",
   "main": "src/main.js",
   "scripts": {
     "lint": "scripts/lint",
