@@ -18,6 +18,7 @@ class WeChatWindow {
         webSecurity: false,
       },
       show: false,
+      icon: path.join(__dirname, '../../assets/icons/png/wechatai.png'),
     });
 
     const script = readFileSync(path.join(__dirname, '../monkey-patch/index.js'));

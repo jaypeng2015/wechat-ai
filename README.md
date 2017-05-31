@@ -25,11 +25,19 @@ A WeChat client with built in robot integrated with [api.ai](https://api.ai).
 
  ## Build | 构建
 
-  `yarn run build`.
+ ### Mac OS
 
-  The output can be found in `.output` folder.
+  `yarn build:mac`.
 
-  输出位于`.output`目录下。
+  The output can be found in `.output` folder, with both the original package and the dmg file.
+
+  输出位于`output`目录下，包含打包app文件以及dmg安装包。
+
+### Windows
+
+  TBD.
+
+  敬请期待。
 
  ## Note | 请注意
 

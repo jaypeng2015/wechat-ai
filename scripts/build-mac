@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# build the app
+electron-packager . --out ./output --packageManager yarn --overwrite true --icon ./assets/icons/mac/wechat-ai.icns
+
+# create dmg
+PACKAGE_VERSION=$(node -p "require('./package.json').version")
+FILE_NAME="output/WeChat AI-darwin-x64-v${PACKAGE_VERSION}.dmg"
+rm -f "${FILE_NAME}"
+appdmg scripts/build-mac.json "${FILE_NAME}"

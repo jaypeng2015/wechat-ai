@@ -10,7 +10,7 @@
     "pre-commit": "scripts/pre-commit",
     "start": "electron src/main.js",
     "test": "scripts/test",
-    "build": "electron-packager . --out ./.output --packageManager yarn --overwrite true"
+    "build:mac": "scripts/build-mac"
   },
   "repository": {
     "type": "git",
@@ -51,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "appdmg": "0.4.5",
     "electron-packager": "8.7.0",
     "eslint": "3.19.0",
     "eslint-config-airbnb-base": "11.1.3",
