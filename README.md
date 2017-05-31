@@ -42,14 +42,18 @@ A WeChat client with built in robot integrated with [api.ai](https://api.ai).
 
   敬请期待。
 
- ## Note | 请注意
+## Note | 请注意
 
   The conversation will be sent to api.ai if auto-reply is enabled.
   Check [Terms & Conditions](https://api.ai/terms/)
 
   开启自动回复的对话会被发往api.ai, 查看[条款及协议](https://api.ai/terms/)
 
-  ## Resources | 资源
-
-    - [License (ISC)](https://github.com/nathanbuchar/electron-settings/blob/master/LICENSE.md)
-    - [Releases](https://github.com/jaypeng2015/wechat-ai/releases)
+## Resources | 资源
+  
+  * [License (ISC)][license]
+  * [Releases][releases]
+   
+[license]: ./LICENSE.md
+[releases]: https://github.com/jaypeng2015/wechat-ai/releases
+    
