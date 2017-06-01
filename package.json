@@ -11,7 +11,8 @@
     "start": "electron src/main.js",
     "test": "scripts/test",
     "build:mac": "scripts/build-mac",
-    "build:win": "scripts/build-win"
+    "build:win": "scripts/build-win",
+    "build": "npm run build:mac; npm run build:win"
   },
   "repository": {
     "type": "git",

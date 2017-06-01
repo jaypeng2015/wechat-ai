@@ -4,10 +4,10 @@
 
 
 A WeChat client with built in robot integrated with [api.ai](https://api.ai). 
-Unlike other chatbots, you don't have to make it work by coding, but simply by training your agent in api.ai.
+Unlike other chat bots, you don't have to make it work by coding, but simply by training your agent in api.ai.
 
 个人微信客户端+机器人([api.ai](https://api.ai))。
-与其他聊天机器人不用，你无须编程即可使你的机器人变得更加聪明，只要通过api.ai进行适当的训练即可。
+与其他聊天机器人不同，你无须编程即可使你的机器人变得更加聪明，只要通过api.ai进行适当的训练即可。
 
 [![Node version](https://img.shields.io/badge/node-_7.6.0-green.svg?style=flat)](http://nodejs.org/download/)
 
@@ -38,9 +38,11 @@ Unlike other chatbots, you don't have to make it work by coding, but simply by t
 
 ### Windows
 
-  TBD.
+  `yarn build:win`.
 
-  敬请期待。
+  The output can be found in `.output` folder, with both the original folder and the zip file.
+
+  输出位于`output`目录下，包含原始文件目录以及zip包。
 
 ## Note | 请注意
 
