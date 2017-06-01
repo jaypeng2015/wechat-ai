@@ -1,15 +1,11 @@
-![WeChat AI Icon](https://raw.githubusercontent.com/jaypeng2015/wechat-ai/master/assets/icons/png/wechat-ai.96x96.png)
-# WeChat AI | 微信机器人 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-
+[![WeChat AI Icon](https://raw.githubusercontent.com/jaypeng2015/wechat-ai/master/assets/icons/png/wechat-ai.96x96.png)](https://jaypeng2015.github.io/wechat-ai/)
+# WeChat AI | 微信机器人 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Node version](https://img.shields.io/badge/node-_7.6.0-green.svg?style=flat)](http://nodejs.org/download/)
 
 A WeChat client with built in robot integrated with [api.ai](https://api.ai). 
 Unlike other chat bots, you don't have to make it work by coding, but simply by training your agent in api.ai.
 
 个人微信客户端+机器人([api.ai](https://api.ai))。
 与其他聊天机器人不同，你无须编程即可使你的机器人变得更加聪明，只要通过api.ai进行适当的训练即可。
-
-[![Node version](https://img.shields.io/badge/node-_7.6.0-green.svg?style=flat)](http://nodejs.org/download/)
 
 ## Getting Started | 快速上手
 
@@ -20,15 +16,17 @@ Unlike other chat bots, you don't have to make it work by coding, but simply by 
   - yarn
   - yarn start
   - login
-  - Go to `Menu, Settings -> Auto Reply`, enable auto-reply for the contacts
+  - Go to `Menu -> Settings -> Auto Reply`, enable auto-reply for the contacts
 
- ## Advanced Settings | 高级设置
+## Advanced Settings | 高级设置
 
-  Go to `Menu, Settings -> Api Key`, set your own api key if you have a better api.ai agent.
+  Go to `Menu -> Settings -> Api Key`, set your own API key if you have a better api.ai agent.
+  
+  通过`Menu -> Settings -> Api Key`菜单设置你自己的API Key.
 
- ## Build | 构建
+## Build | 构建
 
- ### Mac OS
+### Mac OS
 
   `yarn build:mac`.
 
