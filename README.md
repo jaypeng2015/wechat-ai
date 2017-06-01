@@ -1,4 +1,4 @@
-![WeChat AI Icon](https://github.com/jaypeng2015/wechat-ai/blob/master/assets/icons/png/wechat-ai.96x96.png)
+![WeChat AI Icon](https://raw.githubusercontent.com/jaypeng2015/wechat-ai/master/assets/icons/png/wechat-ai.96x96.png)
 # WeChat AI | 微信机器人 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 
