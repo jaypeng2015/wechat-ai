@@ -10,7 +10,8 @@
     "pre-commit": "scripts/pre-commit",
     "start": "electron src/main.js",
     "test": "scripts/test",
-    "build:mac": "scripts/build-mac"
+    "build:mac": "scripts/build-mac",
+    "build:win": "scripts/build-win"
   },
   "repository": {
     "type": "git",
