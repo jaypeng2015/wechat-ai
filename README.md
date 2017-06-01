@@ -1,4 +1,7 @@
+![WeChat AI Icon](https://github.com/jaypeng2015/wechat-ai/blob/master/assets/icons/png/wechat-ai.96x96.png)
 # WeChat AI | 微信机器人 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+
+
 
 A WeChat client with built in robot integrated with [api.ai](https://api.ai). 
 Unlike other chatbots, you don't have to make it work by coding, but simply by training your agent in api.ai.
@@ -39,14 +42,18 @@ Unlike other chatbots, you don't have to make it work by coding, but simply by t
 
   敬请期待。
 
- ## Note | 请注意
+## Note | 请注意
 
   The conversation will be sent to api.ai if auto-reply is enabled.
   Check [Terms & Conditions](https://api.ai/terms/)
 
   开启自动回复的对话会被发往api.ai, 查看[条款及协议](https://api.ai/terms/)
 
-  ## Resources | 资源
-
-    - [License (ISC)](https://github.com/nathanbuchar/electron-settings/blob/master/LICENSE.md)
-    - [Releases](https://github.com/jaypeng2015/wechat-ai/releases) 
+## Resources | 资源
+  
+  * [License (ISC)][license]
+  * [Releases][releases]
+   
+[license]: ./LICENSE.md
+[releases]: https://github.com/jaypeng2015/wechat-ai/releases
+    
