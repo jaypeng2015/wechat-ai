@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/jaypeng2015/wechat-ai#readme",
   "engines": {
-    "node": ">=7.6.0"
+    "node": ">=8.1.4"
   },
   "lint-staged": {
     "*.js": "eslint --ext .js"
@@ -54,23 +54,23 @@
   },
   "devDependencies": {
     "appdmg": "0.4.5",
-    "electron-packager": "8.7.0",
-    "eslint": "3.19.0",
-    "eslint-config-airbnb-base": "11.1.3",
-    "eslint-plugin-import": "2.2.0",
-    "eslint-plugin-jest": "19.0.1",
-    "eslint-plugin-lodash": "2.4.0",
+    "electron-packager": "^9.0.1",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.0.0",
+    "eslint-plugin-lodash": "^2.4.5",
     "eslint-plugin-no-loops": "0.3.0",
-    "eslint-plugin-node": "4.2.2",
-    "jest": "20.0.3",
-    "lint-staged": "3.4.0",
+    "eslint-plugin-node": "^5.1.1",
+    "jest": "^21.0.1",
+    "lint-staged": "^4.1.0",
     "pre-commit": "1.2.2"
   },
   "dependencies": {
-    "apiai": "4.0.2",
-    "electron": "1.6.10",
-    "electron-settings": "3.0.14",
+    "apiai": "^4.0.3",
+    "electron": "^1.8.0",
+    "electron-settings": "^3.1.1",
     "lodash": "4.17.4",
-    "uuid": "3.0.1"
+    "uuid": "^3.1.0"
   }
 }
