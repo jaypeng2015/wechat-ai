@@ -10,14 +10,14 @@
     element.dispatchEvent(e);
   };
   ipcRenderer.on('reply text', (event, message) => {
-    const { user, response } = message;
+    const { user, speech } = message;
     const tab = document.querySelectorAll('a[ng-dblclick=\"dblclickChat()\"]')[0];
     tab.click();
     setTimeout(() => {
       const element = document.querySelectorAll(`[data-username=\"${user}\"]`)[0];
       element.click();
       const editArea = document.getElementById('editArea');
-      editArea.innerHTML = response.result.fulfillment.speech.replace('\\n', '<br>');
+      editArea.innerHTML = speech.replace(/\n/g, '<br />');
       angular.element(editArea).scope().editAreaCtn = editArea.innerHTML;
       triggerKeyDown(editArea, 13); /* send the message */
     }, 1000);

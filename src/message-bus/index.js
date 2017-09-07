@@ -95,7 +95,7 @@ class MessageBus {
   async handleMessage(message) {
     const { MsgType, Content, FromUserName } = message;
     const contacts = this.settings.getContacts() || {};
-    const enabled = contacts[FromUserName];
+    const enabled = _.get(contacts[FromUserName], 'autoReply', false);
     if (!enabled) {
       return;
     }
@@ -111,10 +111,13 @@ class MessageBus {
       case 1: // text message
         response = await this.apiAi.request(Content, sessionId);
         if (_.get(response, 'status.code') === 200) {
-          this.webContents.send('reply text', {
-            user: FromUserName,
-            response,
-          });
+          const speech = _.get(response, 'result.fulfillment.speech');
+          if (_.trim(speech)) {
+            this.webContents.send('reply text', {
+              user: FromUserName,
+              speech,
+            });
+          }
         }
         break;
       default:
