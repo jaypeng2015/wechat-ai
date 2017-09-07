@@ -17,7 +17,7 @@
       const element = document.querySelectorAll(`[data-username=\"${user}\"]`)[0];
       element.click();
       const editArea = document.getElementById('editArea');
-      editArea.innerHTML = speech.replace(/\n/g, '<br />');
+      editArea.innerHTML = speech.replace(/\\n/g, '<br />');
       angular.element(editArea).scope().editAreaCtn = editArea.innerHTML;
       triggerKeyDown(editArea, 13); /* send the message */
     }, 1000);
