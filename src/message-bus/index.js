@@ -21,7 +21,6 @@ class MessageBus {
       this.settings.syncContacts(contacts.MemberList);
       const menu = Menu.getApplicationMenu().items.find(item => item.label === 'Settings');
       const subMenu = menu.submenu.items.find(sub => sub.label === 'Auto Reply');
-      subMenu.enable = true;
       subMenu.enabled = true;
     });
 

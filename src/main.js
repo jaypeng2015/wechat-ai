@@ -54,6 +54,7 @@ class WeChatMe {
 
   createWeChatWindow() {
     this.wechatWindow = new WeChatWindow();
+    // this.wechatWindow.window.openDevTools();
   }
 
   createMessageBus() {

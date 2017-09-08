@@ -37,11 +37,12 @@
       const me = findMe();
       if (response.BaseResponse.Ret === 0 && response.AddMsgCount > 0) {
         const messages = response.AddMsgList.filter(message => (
-          message.ToUserName === me && (
-          message.MsgType === 1 /* text message */
-            || message.MsgType === 3 /* images */
-            || message.MsgType === 34 /* voice message */
-            || message.MsgType === 49)) /* sharing */
+          ((message.ToUserName === me && !message.FromUserName.startsWith('@@')) /* remove group message */
+          && (message.Content.includes(me))) /* mention */
+          && ( message.MsgType === 1 /* text message */
+              || message.MsgType === 3 /* images */
+              || message.MsgType === 34 /* voice message */
+              || message.MsgType === 49)) /* sharing */
         );
         if (messages.length > 0) {
           ipcRenderer.send('wechatMessage', messages);
