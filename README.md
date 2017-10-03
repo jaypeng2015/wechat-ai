@@ -1,5 +1,9 @@
 [![WeChat AI Icon](https://raw.githubusercontent.com/jaypeng2015/wechat-ai/master/assets/icons/png/wechat-ai.96x96.png)](https://jaypeng2015.github.io/wechat-ai/)
-# WeChat AI | 微信机器人 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Node version](https://img.shields.io/badge/node-_8.1.4-green.svg?style=flat)](http://nodejs.org/download/)
+# WeChat AI | 微信机器人 
+
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Node version](https://img.shields.io/badge/node-_8.1.4-green.svg?style=flat)](http://nodejs.org/download/)
+[![Dependency Status](https://david-dm.org/jaypeng2015/wechat-ai/status.svg)](https://david-dm.org/jaypeng2015/wechat-ai)
+[![devDependency Status](https://david-dm.org/jaypeng2015/wechat-ai/dev-status.svg)](https://david-dm.org/jaypeng2015/wechat-ai?type=dev)
 
 A WeChat client with built-in robot integrated with [api.ai](https://api.ai). 
 Unlike other chat bots, you don't have to make it work by coding, but simply by training your agent in api.ai.
