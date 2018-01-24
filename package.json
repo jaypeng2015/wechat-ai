@@ -53,24 +53,24 @@
     ]
   },
   "devDependencies": {
-    "appdmg": "0.4.5",
-    "electron-packager": "^9.0.1",
-    "eslint": "^4.6.1",
-    "eslint-config-airbnb-base": "^12.0.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jest": "^21.0.0",
-    "eslint-plugin-lodash": "^2.4.5",
-    "eslint-plugin-no-loops": "0.3.0",
-    "eslint-plugin-node": "^5.1.1",
-    "jest": "^21.0.1",
-    "lint-staged": "^4.1.0",
-    "pre-commit": "1.2.2"
+    "appdmg": "^0.5.2",
+    "electron-packager": "^10.1.1",
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.7.0",
+    "eslint-plugin-lodash": "^2.5.1",
+    "eslint-plugin-no-loops": "^0.3.0",
+    "eslint-plugin-node": "^5.2.1",
+    "jest": "^22.1.4",
+    "lint-staged": "^6.0.1",
+    "pre-commit": "^1.2.2"
   },
   "dependencies": {
     "apiai": "^4.0.3",
-    "electron": "^1.8.0",
-    "electron-settings": "^3.1.1",
-    "lodash": "4.17.4",
-    "uuid": "^3.1.0"
+    "electron": "^1.8.2-beta.4",
+    "electron-settings": "^3.1.4",
+    "lodash": "^4.17.4",
+    "uuid": "^3.2.1"
   }
 }
