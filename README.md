@@ -16,9 +16,8 @@ Unlike other chat bots, you don't have to make it work by coding, but simply by 
   - git clone https://github.com/jaypeng2015/wechat-ai
   - cd wechat-ai
   - nvm install
-  - npm install -g yarn
-  - yarn
-  - yarn start
+  - npm install
+  - npm start
   - login
   - Go to `Menu -> Settings -> Auto Reply`, enable auto-reply for the contacts
 
