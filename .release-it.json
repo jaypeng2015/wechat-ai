@@ -4,8 +4,12 @@
   "npm": {
     "publish": false
   },
+  "src": {
+    "tagName": "v%s"
+  },
   "github": {
     "release": true,
-    "assets": "output/*.(dmg|zip)"
+    "releaseName": "v%s",
+    "assets": "output/*v%s.(dmg|zip)"
   }
 }
