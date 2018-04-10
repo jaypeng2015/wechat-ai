@@ -11,7 +11,7 @@
   };
   ipcRenderer.on('reply text', (event, message) => {
     const { user, speech } = message;
-    const tab = document.querySelectorAll('a[ng-dblclick="dblclickChat()"]')[0];
+    const tab = document.querySelectorAll('a[ng-dblclick=\"dblclickChat()\"]')[0]; /* prettier-ignore */
     tab.click();
     setTimeout(() => {
       const element = document.querySelectorAll(`[data-username=\"${user}\"]`)[0];
@@ -23,7 +23,7 @@
     }, 1000);
   });
   const findMe = () => {
-    const header = document.querySelectorAll('div[class="header"]')[0];
+    const header = document.querySelectorAll('div[class=\"header\"]')[0]; /* prettier-ignore */
     if (!header) {
       return null;
     }
