@@ -67,13 +67,7 @@ class WeChatMe {
     if (process.platform === 'darwin') {
       template.unshift({
         label: app.getName(),
-        submenu: [
-          { role: 'about' },
-          { type: 'separator' },
-          { role: 'hide' },
-          { type: 'separator' },
-          { role: 'quit' },
-        ],
+        submenu: [{ role: 'about' }, { type: 'separator' }, { role: 'hide' }, { type: 'separator' }, { role: 'quit' }],
       });
     }
     this.menu = Menu.buildFromTemplate(template);

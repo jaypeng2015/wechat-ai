@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb-base", "plugin:lodash/canonical", "plugin:node/recommended"],
+  "extends": ["airbnb-base", "plugin:lodash/canonical", "plugin:node/recommended", "plugin:prettier/recommended"],
   "plugins": ["jest", "lodash", "no-loops", "node"],
   "env": {
     "node": true,
@@ -15,30 +15,13 @@
     }
   },
   "rules": {
-    "consistent-return": 0,
-    "comma-dangle": ["error", {
-      "arrays": "always-multiline",
-      "objects": "always-multiline",
-      "functions": "never" // Node 6 doesn't like `(function(a,){ })(b,);`
-    }],
-    "func-names": "error",
-    "id-length": ["error", { "min": 2, "properties": "never", "exceptions": ["_", "i", "j"] }],
-    "import/export": "error",
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
-    "indent": ["error", 2, { "SwitchCase": 1 }],
-    "jest/no-identical-title": "error",
-    "lodash/chaining": ["error", "always"],
-    "lodash/prefer-constant": ["error", false],
-    "lodash/prefer-lodash-method": ["error", { "ignoreMethods": ["find", "startsWith"] }],
-    "lodash/prefer-over-quantifier": "off",
-    "max-len": ["error", 120],
-    "no-console": 0,
-    "no-loops/no-loops": "error",
-    "no-mixed-operators": ["error", {"allowSamePrecedence": true}],
-    "no-shadow": ["error", { "allow": ["cb", "err", "done", "resolve", "reject"] }],
-    "node/exports-style": ["error", "module.exports"],
-    "node/no-deprecated-api": "error",
-    "node/no-missing-require": "error",
-    "object-curly-spacing": ["error", "always"]
+    "id-length": [2, { "exceptions": ["_", "i", "j"], "min": 2, "properties": "never" }],
+    "indent": [2, 2, { "SwitchCase": 1 }],
+    "lodash/prefer-constant": "off",
+    "lodash/prefer-immutable-method": "off",
+    "no-console": "off",
+    "no-shadow": [2, { "allow": ["cb", "err", "done", "resolve", "reject"] }],
+    "no-underscore-dangle": "off",
+    "node/no-unpublished-require": "off"
   }
 }

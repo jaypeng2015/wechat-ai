@@ -19,12 +19,12 @@ class MessageBus {
 
     ipcMain.on('get contact', (event, contacts) => {
       this.settings.syncContacts(contacts.MemberList);
-      const menu = Menu.getApplicationMenu().items.find(item => item.label === 'Settings');
-      const subMenu = menu.submenu.items.find(sub => sub.label === 'Auto Reply');
+      const menu = _.find(Menu.getApplicationMenu().items, { label: 'Settings' });
+      const subMenu = _.find(menu.submenu.items, { label: 'Auto Reply' });
       subMenu.enabled = true;
     });
 
-    ipcMain.on('loadAutoReplySettings', (event) => {
+    ipcMain.on('loadAutoReplySettings', event => {
       const contacts = this.settings.getContacts() || {};
       const array = _.orderBy(_.values(contacts), ['RemarkPYQuanPin', 'PYQuanPin']);
       event.sender.send('loadAutoReplySettingsReply', array);
@@ -34,7 +34,7 @@ class MessageBus {
       this.settings.updateContact(contact);
     });
 
-    ipcMain.on('getApiKey', (event) => {
+    ipcMain.on('getApiKey', event => {
       event.sender.send('getApiKeyReply', this.settings.getApiKey());
     });
 
@@ -120,7 +120,7 @@ class MessageBus {
         }
         break;
       default:
-        // ignore other types of messages for now
+      // ignore other types of messages for now
     }
   }
 }

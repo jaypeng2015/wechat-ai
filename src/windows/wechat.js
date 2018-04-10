@@ -29,16 +29,16 @@ class WeChatWindow {
     this.window.webContents.on('dom-ready', () => {
       // Monkey patch here
       const javaStript =
-        "var script = document.createElement('script');"
-        + 'script.type = "text/javascript";'
-        + `script.text = "${_.replace(script.toString(), /\n/g, '')}";`
-        + 'document.head.appendChild(script);';
+        "var script = document.createElement('script');" +
+        'script.type = "text/javascript";' +
+        `script.text = "${_.replace(script.toString(), /\n/g, '')}";` +
+        'document.head.appendChild(script);';
       this.window.webContents.executeJavaScript(javaStript);
     });
   }
 
   initWindowEvents() {
-    this.window.once('close', (event) => {
+    this.window.once('close', event => {
       event.preventDefault();
       app.exit();
     });

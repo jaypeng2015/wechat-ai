@@ -2,16 +2,16 @@
 (function(xhr) {
   const { ipcRenderer } = require('electron');
   const triggerKeyDown = (element, keyCode) => {
-    const e =  new window.KeyboardEvent('keydown', {
+    const e = new window.KeyboardEvent('keydown', {
       bubbles: true,
     });
     delete e.keyCode;
-    Object.defineProperty(e, 'keyCode', {value: keyCode});
+    Object.defineProperty(e, 'keyCode', { value: keyCode });
     element.dispatchEvent(e);
   };
   ipcRenderer.on('reply text', (event, message) => {
     const { user, speech } = message;
-    const tab = document.querySelectorAll('a[ng-dblclick=\"dblclickChat()\"]')[0];
+    const tab = document.querySelectorAll('a[ng-dblclick="dblclickChat()"]')[0];
     tab.click();
     setTimeout(() => {
       const element = document.querySelectorAll(`[data-username=\"${user}\"]`)[0];
@@ -23,7 +23,7 @@
     }, 1000);
   });
   const findMe = () => {
-    const header = document.querySelectorAll('div[class=\"header\"]')[0];
+    const header = document.querySelectorAll('div[class="header"]')[0];
     if (!header) {
       return null;
     }
@@ -36,13 +36,15 @@
       const response = JSON.parse(events[0].target.responseText);
       const me = findMe();
       if (response.BaseResponse.Ret === 0 && response.AddMsgCount > 0) {
-        const messages = response.AddMsgList.filter(message => (
-          ((message.ToUserName === me && !message.FromUserName.startsWith('@@')) /* remove group message */
-          && (message.Content.includes(me))) /* mention */
-          && ( message.MsgType === 1 /* text message */
-              || message.MsgType === 3 /* images */
-              || message.MsgType === 34 /* voice message */
-              || message.MsgType === 49)) /* sharing */
+        const messages = response.AddMsgList.filter(
+          message =>
+            message.ToUserName === me &&
+            !message.FromUserName.startsWith('@@') /* remove group message */ &&
+            message.Content.includes(me) /* mention */ &&
+            (message.MsgType === 1 /* text message */ ||
+            message.MsgType === 3 /* images */ ||
+            message.MsgType === 34 /* voice message */ ||
+              message.MsgType === 49) /* sharing */
         );
         if (messages.length > 0) {
           ipcRenderer.send('wechatMessage', messages);

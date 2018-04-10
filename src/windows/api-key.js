@@ -24,7 +24,7 @@ class ApiKeyWindow {
   }
 
   initWindowEvents() {
-    this.window.on('close', (event) => {
+    this.window.on('close', event => {
       event.preventDefault();
       this.hide();
     });

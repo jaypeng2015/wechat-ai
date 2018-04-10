@@ -34,11 +34,11 @@ module.exports.request = (text, sessionId) =>
       sessionId,
     });
 
-    request.on('response', (response) => {
+    request.on('response', response => {
       resolve(response);
     });
 
-    request.on('error', (err) => {
+    request.on('error', err => {
       console.log(err);
       reject(err);
     });
