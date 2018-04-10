@@ -12,21 +12,15 @@
     "test": "scripts/test",
     "build:mac": "scripts/build-mac",
     "build:win": "scripts/build-win",
-    "build": "npm run build:mac; npm run build:win"
+    "build": "npm run build:mac; npm run build:win",
+    "release": "release-it"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jaypeng2015/wechat-ai.git"
   },
   "pre-commit": "pre-commit",
-  "keywords": [
-    "wechat",
-    "weixin",
-    "electron",
-    "api.ai",
-    "chatbot",
-    "ai"
-  ],
+  "keywords": ["wechat", "weixin", "electron", "api.ai", "chatbot", "ai"],
   "author": "Jingwei Peng",
   "license": "ISC",
   "bugs": {
@@ -49,9 +43,7 @@
         "statements": 100
       }
     },
-    "collectCoverageFrom": [
-      "src/**/*.{js}"
-    ]
+    "collectCoverageFrom": ["src/**/*.{js}"]
   },
   "devDependencies": {
     "appdmg": "^0.5.2",
@@ -70,7 +62,8 @@
     "lint-staged": "^7.0.0",
     "npm": "^5.8.0",
     "pre-commit": "^1.2.2",
-    "prettier": "^1.11.1"
+    "prettier": "^1.11.1",
+    "release-it": "^7.3.0"
   },
   "dependencies": {
     "apiai": "^4.0.3",

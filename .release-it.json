@@ -1,0 +1,11 @@
+{
+  "buildCommand": "npm run build",
+  "verbose": true,
+  "npm": {
+    "publish": false
+  },
+  "github": {
+    "release": true,
+    "assets": "output/*.(dmg|zip)"
+  }
+}
