@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "rm -rf output; npm run build",
   "verbose": true,
   "npm": {
     "publish": false
@@ -8,8 +8,9 @@
     "tagName": "v%s"
   },
   "github": {
+    "draft": true,
     "release": true,
     "releaseName": "v%s",
-    "assets": "output/*v%s.(dmg|zip)"
+    "assets": "output/*v.(dmg|zip)"
   }
 }
