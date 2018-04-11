@@ -5,10 +5,12 @@
     "publish": false
   },
   "src": {
+    "commit": false,
     "tagName": "v%s"
   },
   "github": {
-    "release": false,
+    "draft": true,
+    "release": true,
     "releaseName": "v%s",
     "assets": "output/*.(dmg|zip)"
   }
