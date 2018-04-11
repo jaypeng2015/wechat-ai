@@ -31,7 +31,7 @@ Go to `Menu -> Settings -> Api Key`, set your own API key if you have a better a
 
 ### Mac OS
 
-`yarn build:mac`.
+`npm run build:mac`.
 
 The output can be found in `.output` folder, with both the original package and the dmg file.
 
@@ -39,11 +39,17 @@ The output can be found in `.output` folder, with both the original package and 
 
 ### Windows
 
-`yarn build:win`.
+`npm run build:win`.
 
 The output can be found in `.output` folder, with both the original folder and the zip file.
 
 输出位于`output`目录下，包含原始文件目录以及 zip 包。
+
+## Release | 发布
+
+`npm run release`.
+By default this will always generate a draft release on github.
+For more information please check [release-it](https://github.com/webpro/release-it)
 
 ## Note | 请注意
 
