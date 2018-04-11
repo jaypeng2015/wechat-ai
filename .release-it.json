@@ -8,9 +8,8 @@
     "tagName": "v%s"
   },
   "github": {
-    "draft": true,
-    "release": true,
+    "release": false,
     "releaseName": "v%s",
-    "assets": "output/*v.(dmg|zip)"
+    "assets": "output/*.(dmg|zip)"
   }
 }
