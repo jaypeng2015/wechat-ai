@@ -5,7 +5,7 @@
     "publish": false
   },
   "src": {
-    "commit": false,
+    "commit": true,
     "tagName": "v%s"
   },
   "github": {
