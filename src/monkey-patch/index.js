@@ -29,23 +29,29 @@
     }
 
     const tmp = header.innerHTML.substring(header.innerHTML.indexOf('username=') + 9);
-    return tmp.substring(0, tmp.indexOf('&'));
+    const tmp2 = header.innerHTML.substring(header.innerHTML.indexOf('display_name ng-binding') + 25);
+    return {
+      name: tmp.substring(0, tmp.indexOf('&')),
+      nickname: tmp2.substring(0, tmp2.indexOf('<')),
+    };
   };
+  const isMessageTypeSupported = message =>
+    message.MsgType === 1 /* text message */ ||
+    message.MsgType === 3 /* images */ ||
+    message.MsgType === 34 /* voice message */ ||
+    message.MsgType === 4 /* sharing */;
+  const isDirectMessage = (message, me) => message.ToUserName === me.name && !message.FromUserName.startsWith('@@');
+  const isGroupMention = (message, me) =>
+    message.FromUserName.startsWith('@@') && message.Content.includes(me.nickname);
   const incomingMessage = (xhrInstance, events) => {
     if (xhrInstance.readyState == 4 && xhrInstance.status === 200 && events[0].target.responseText) {
       const response = JSON.parse(events[0].target.responseText);
       const me = findMe();
       if (response.BaseResponse.Ret === 0 && response.AddMsgCount > 0) {
         const messages = response.AddMsgList.filter(
-          message =>
-            message.ToUserName === me &&
-            !message.FromUserName.startsWith('@@') /* remove group message */ &&
-            message.Content.includes(me) /* mention */ &&
-            (message.MsgType === 1 /* text message */ ||
-            message.MsgType === 3 /* images */ ||
-            message.MsgType === 34 /* voice message */ ||
-              message.MsgType === 49) /* sharing */
+          message => (isDirectMessage(message, me) || isGroupMention(message, me)) && isMessageTypeSupported(message)
         );
+        console.log('messages', messages);
         if (messages.length > 0) {
           ipcRenderer.send('wechatMessage', messages);
         }
