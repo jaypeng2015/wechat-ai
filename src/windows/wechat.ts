@@ -1,7 +1,7 @@
-import * as _ from 'lodash';
-import * as path from 'path';
-import { readFileSync } from 'fs';
+import _ from 'lodash';
 import { app, BrowserWindow } from 'electron';
+import { readFileSync } from 'fs';
+import path from 'path';
 
 export default class WeChatWindow {
   public window: BrowserWindow;
@@ -22,14 +22,14 @@ export default class WeChatWindow {
 
   private createWindow() {
     this.window = new BrowserWindow({
-      width: 900,
       height: 760,
+      icon: path.join(__dirname, '../../assets/icons/png/wechat-ai.png'),
+      show: false,
       webPreferences: {
         nodeIntegration: true,
         webSecurity: false,
       },
-      show: false,
-      icon: path.join(__dirname, '../../assets/icons/png/wechat-ai.png'),
+      width: 900,
     });
 
     const script = readFileSync(path.join(__dirname, '../monkey-patch/index.js'));

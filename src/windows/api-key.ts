@@ -19,16 +19,16 @@ export default class ApiKeyWindow {
 
   private createWindow(parent) {
     this.window = new BrowserWindow({
-      width: 480,
       height: 300,
+      modal: false,
+      parent,
+      resizable: false,
+      show: false,
       webPreferences: {
         nodeIntegration: true,
         webSecurity: false,
       },
-      parent,
-      modal: false,
-      show: false,
-      resizable: false,
+      width: 480,
     });
 
     this.window.loadURL(`file://${__dirname}/api-key.html`);

@@ -31,18 +31,18 @@ const app = apiAi(apiKey);
  */
 export const request = (text, sessionId) =>
   new Promise((resolve, reject) => {
-    const request = app.textRequest(text, {
+    const req = app.textRequest(text, {
       sessionId,
     });
 
-    request.on('response', response => {
+    req.on('response', response => {
       resolve(response);
     });
 
-    request.on('error', err => {
-      console.log(err);
+    req.on('error', err => {
+      console.log(err); // tslint:disable-line
       reject(err);
     });
 
-    request.end();
+    req.end();
   });

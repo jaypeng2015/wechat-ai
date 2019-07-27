@@ -1,9 +1,9 @@
 import { app, Menu, MenuItem, MenuItemConstructorOptions } from 'electron';
 
-import MessageBus from './message-bus';
-import WeChatWindow from './windows/wechat';
-import SettingsWindow from './windows/settings';
 import ApiKeyWindow from './windows/api-key';
+import MessageBus from './message-bus';
+import SettingsWindow from './windows/settings';
+import WeChatWindow from './windows/wechat';
 
 class WeChatAI {
   private apiKeyWindow: ApiKeyWindow;
@@ -22,7 +22,9 @@ class WeChatAI {
     app.on('second-instance', () => {
       // Someone tried to run a second instance, we should focus our window.
       if (this.wechatWindow) {
-        if (this.wechatWindow.window.isMinimized()) this.wechatWindow.window.restore();
+        if (this.wechatWindow.window.isMinimized()) {
+          this.wechatWindow.window.restore();
+        }
         this.wechatWindow.window.focus();
       }
     });
@@ -71,17 +73,17 @@ class WeChatAI {
       label: 'Settings',
       submenu: [
         {
-          label: 'Auto Reply',
           click: () => {
             instance.settingsWindow.show();
           },
           enabled: false,
+          label: 'Auto Reply',
         },
         {
-          label: 'Api Key',
           click: () => {
             instance.apiKeyWindow.show();
           },
+          label: 'Api Key',
         },
       ],
     });

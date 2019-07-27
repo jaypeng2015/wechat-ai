@@ -43,7 +43,6 @@ class MessageBus {
     });
 
     ipcMain.on('setApiKey', (event, apiKey) => {
-      console.log('setApiKey', apiKey);
       settings.setApiKey(apiKey);
     });
   }
@@ -118,8 +117,8 @@ class MessageBus {
           const speech = _.get(response, 'result.fulfillment.speech');
           if (_.trim(speech)) {
             this.webContents.send('reply text', {
-              user: FromUserName,
               speech,
+              user: FromUserName,
             });
           }
         }

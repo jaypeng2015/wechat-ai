@@ -17,24 +17,24 @@ export default class SettingsWindow {
     this.window.focus();
   }
 
-  createWindow(parent) {
+  private createWindow(parent) {
     this.window = new BrowserWindow({
-      width: 500,
       height: 480,
+      modal: false,
+      parent,
+      resizable: false,
+      show: false,
       webPreferences: {
         nodeIntegration: true,
         webSecurity: false,
       },
-      parent,
-      modal: false,
-      show: false,
-      resizable: false,
+      width: 500,
     });
 
     this.window.loadURL(`file://${__dirname}/html/settings.html`);
   }
 
-  initWindowEvents() {
+  private initWindowEvents() {
     this.window.on('close', event => {
       event.preventDefault();
       this.hide();
