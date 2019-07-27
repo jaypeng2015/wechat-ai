@@ -1,12 +1,23 @@
-const { BrowserWindow } = require('electron');
+import { BrowserWindow } from 'electron';
 
-class ApiKeyWindow {
+export default class ApiKeyWindow {
+  private window: BrowserWindow;
   constructor(parent) {
     this.createWindow(parent);
     this.initWindowEvents();
   }
 
-  createWindow(parent) {
+  public hide() {
+    this.window.hide();
+  }
+
+  public show() {
+    this.window.webContents.send('show api key');
+    this.window.show();
+    this.window.focus();
+  }
+
+  private createWindow(parent) {
     this.window = new BrowserWindow({
       width: 480,
       height: 300,
@@ -23,26 +34,10 @@ class ApiKeyWindow {
     this.window.loadURL(`file://${__dirname}/api-key.html`);
   }
 
-  initWindowEvents() {
+  private initWindowEvents() {
     this.window.on('close', event => {
       event.preventDefault();
       this.hide();
     });
   }
-
-  hide() {
-    this.window.hide();
-  }
-
-  show() {
-    this.window.webContents.send('show api key');
-    this.window.show();
-    this.window.focus();
-  }
-
-  removeAllListeners(name) {
-    this.window.removeAllListeners(name);
-  }
 }
-
-module.exports = ApiKeyWindow;

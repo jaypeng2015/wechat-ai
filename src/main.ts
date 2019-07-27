@@ -1,36 +1,36 @@
-const { app, Menu, MenuItem } = require('electron');
+import { app, Menu, MenuItem, MenuItemConstructorOptions } from 'electron';
 
-const MessageBus = require('./message-bus');
-const WeChatWindow = require('./windows/wechat');
-const SettingsWindow = require('./windows/settings');
-const ApiKeyWindow = require('./windows/api-key');
+import MessageBus from './message-bus';
+import WeChatWindow from './windows/wechat';
+import SettingsWindow from './windows/settings';
+import ApiKeyWindow from './windows/api-key';
 
-class WeChatMe {
-  constructor() {
-    this.wechatWindow = null;
-    this.settingsWindow = null;
-    this.apiKeyWindow = null;
-    this.messageBus = null;
-    this.menu = null;
-  }
+class WeChatAI {
+  private apiKeyWindow: ApiKeyWindow;
+  private menu: Menu;
+  private messageBus: MessageBus;
+  private settingsWindow: SettingsWindow;
+  private wechatWindow: WeChatWindow;
 
-  checkInstance() {
-    return !app.makeSingleInstance(() => {
+  public init() {
+    const gotTheLock = app.requestSingleInstanceLock();
+    if (!gotTheLock) {
+      app.quit();
+      return;
+    }
+
+    app.on('second-instance', () => {
+      // Someone tried to run a second instance, we should focus our window.
       if (this.wechatWindow) {
-        this.wechatWindow.show();
+        if (this.wechatWindow.window.isMinimized()) this.wechatWindow.window.restore();
+        this.wechatWindow.window.focus();
       }
     });
+
+    this.initApp();
   }
 
-  init() {
-    if (this.checkInstance()) {
-      this.initApp();
-    } else {
-      app.quit();
-    }
-  }
-
-  initApp() {
+  private initApp() {
     app.on('ready', () => {
       this.createWeChatWindow();
       this.createApiKeyWindow();
@@ -46,24 +46,20 @@ class WeChatMe {
         this.wechatWindow.show();
       }
     });
-
-    app.on('before-quit', () => {
-      this.settingsWindow.removeAllListeners('close');
-    });
   }
 
-  createWeChatWindow() {
+  private createWeChatWindow() {
     this.wechatWindow = new WeChatWindow();
-    // this.wechatWindow.window.openDevTools();
+    this.wechatWindow.window.webContents.openDevTools();
   }
 
-  createMessageBus() {
+  private createMessageBus() {
     this.messageBus = new MessageBus(this.wechatWindow.window.webContents);
   }
 
-  createSettingsMenu() {
+  private createSettingsMenu() {
     const instance = this;
-    const template = [];
+    const template: MenuItemConstructorOptions[] = [];
     if (process.platform === 'darwin') {
       template.unshift({
         label: app.getName(),
@@ -93,13 +89,13 @@ class WeChatMe {
     Menu.setApplicationMenu(this.menu);
   }
 
-  createSettingsWindow() {
+  private createSettingsWindow() {
     this.settingsWindow = new SettingsWindow(this.wechatWindow.window);
   }
 
-  createApiKeyWindow() {
+  private createApiKeyWindow() {
     this.apiKeyWindow = new ApiKeyWindow(this.wechatWindow.window);
   }
 }
 
-new WeChatMe().init();
+new WeChatAI().init();

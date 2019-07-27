@@ -1,15 +1,26 @@
-const _ = require('lodash');
-const path = require('path');
-const { readFileSync } = require('fs');
-const { app, BrowserWindow } = require('electron');
+import * as _ from 'lodash';
+import * as path from 'path';
+import { readFileSync } from 'fs';
+import { app, BrowserWindow } from 'electron';
 
-class WeChatWindow {
+export default class WeChatWindow {
+  public window: BrowserWindow;
+
   constructor() {
     this.createWindow();
     this.initWindowEvents();
   }
 
-  createWindow() {
+  public hide() {
+    this.window.hide();
+  }
+
+  public show() {
+    this.window.show();
+    this.window.focus();
+  }
+
+  private createWindow() {
     this.window = new BrowserWindow({
       width: 900,
       height: 760,
@@ -18,7 +29,7 @@ class WeChatWindow {
         webSecurity: false,
       },
       show: false,
-      icon: path.join(__dirname, '../../assets/icons/png/wechatai.png'),
+      icon: path.join(__dirname, '../../assets/icons/png/wechat-ai.png'),
     });
 
     const script = readFileSync(path.join(__dirname, '../monkey-patch/index.js'));
@@ -37,21 +48,10 @@ class WeChatWindow {
     });
   }
 
-  initWindowEvents() {
+  private initWindowEvents() {
     this.window.once('close', event => {
       event.preventDefault();
       app.exit();
     });
   }
-
-  hide() {
-    this.window.hide();
-  }
-
-  show() {
-    this.window.show();
-    this.window.focus();
-  }
 }
-
-module.exports = WeChatWindow;

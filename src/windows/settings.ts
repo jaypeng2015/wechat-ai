@@ -1,9 +1,20 @@
-const { BrowserWindow } = require('electron');
+import { BrowserWindow } from 'electron';
 
-class SettingsWindow {
+export default class SettingsWindow {
+  private window: BrowserWindow;
   constructor(parent) {
     this.createWindow(parent);
     this.initWindowEvents();
+  }
+
+  public hide() {
+    this.window.hide();
+  }
+
+  public show() {
+    this.window.webContents.send('show');
+    this.window.show();
+    this.window.focus();
   }
 
   createWindow(parent) {
@@ -20,7 +31,7 @@ class SettingsWindow {
       resizable: false,
     });
 
-    this.window.loadURL(`file://${__dirname}/settings.html`);
+    this.window.loadURL(`file://${__dirname}/html/settings.html`);
   }
 
   initWindowEvents() {
@@ -29,20 +40,4 @@ class SettingsWindow {
       this.hide();
     });
   }
-
-  hide() {
-    this.window.hide();
-  }
-
-  show() {
-    this.window.webContents.send('show');
-    this.window.show();
-    this.window.focus();
-  }
-
-  removeAllListeners(name) {
-    this.window.removeAllListeners(name);
-  }
 }
-
-module.exports = SettingsWindow;

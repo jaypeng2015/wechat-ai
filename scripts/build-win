@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # build the app
-electron-packager . --out ./output --packageManager yarn --overwrite true --platform win32 --x64 --icon ./assets/icons/win/wechat-ai.ico
+npm run compile
+electron-packager ./dist --out ./output --packageManager yarn --overwrite true --platform win32 --x64 --icon ./assets/icons/win/wechat-ai.ico
 
 PACKAGE_VERSION=$(node -p "require('./package.json').version")
-FILE_NAME="WeChat AI-win32-x64-v${PACKAGE_VERSION}.zip"
+FILE_NAME="WeChat_AI-win32-x64-v${PACKAGE_VERSION}.zip"
 cd output
 rm -f "${FILE_NAME}"
-zip "${FILE_NAME}" -r "./WeChat AI-win32-x64"
+zip "${FILE_NAME}" -r "./WeChat_AI-win32-x64"
 cd ..

@@ -1,7 +1,7 @@
-const _ = require('lodash');
-const settings = require('electron-settings');
+import _ from 'lodash';
+import settings from 'electron-settings';
 
-module.exports.syncContacts = contacts => {
+export const syncContacts = contacts => {
   const localContacts = settings.get('contacts');
   settings.delete('contacts');
   const updated = _.reduce(
@@ -17,12 +17,11 @@ module.exports.syncContacts = contacts => {
   settings.set('contacts', updated);
 };
 
-module.exports.getContacts = () => settings.get('contacts');
-
-module.exports.updateContact = contact => {
+export const getContacts = () => settings.get('contacts');
+export const updateContact = contact => {
   settings.set(`contacts.${contact.UserName}`, contact);
 };
 
-module.exports.getApiKey = () => settings.get('apiKey');
+export const getApiKey = () => settings.get('apiKey');
 
-module.exports.setApiKey = apiKey => settings.set('apiKey', apiKey);
+export const setApiKey = apiKey => settings.set('apiKey', apiKey);

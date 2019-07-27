@@ -1,5 +1,6 @@
-const apiAi = require('apiai');
-const settings = require('../settings');
+import apiAi from 'apiai';
+
+import * as settings from '../settings';
 
 const apiKey = settings.getApiKey() || 'b6220b38aec344a4a900baa48e663a65';
 const app = apiAi(apiKey);
@@ -28,7 +29,7 @@ const app = apiAi(apiKey);
  *   sessionId: '1495405752519' }
  * ```
  */
-module.exports.request = (text, sessionId) =>
+export const request = (text, sessionId) =>
   new Promise((resolve, reject) => {
     const request = app.textRequest(text, {
       sessionId,

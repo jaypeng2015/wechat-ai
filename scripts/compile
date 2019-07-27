@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm -rf dist
+tsc
+cp src/windows/*.html dist/windows
+cp package.json dist

@@ -1,45 +1,50 @@
-const _ = require('lodash');
-const uuid = require('uuid');
-const { ipcMain, Menu } = require('electron');
+import _, { Dictionary } from 'lodash';
+import { ipcMain, Menu, WebContents } from 'electron';
+import uuid from 'uuid';
+
+import { request } from '../api-ai';
+import * as settings from '../settings';
 
 class MessageBus {
-  constructor(webContents) {
-    this.settings = require('../settings'); // eslint-disable-line global-require
-    this.apiAi = require('../api-ai'); // eslint-disable-line global-require
+  private sessions: Dictionary<string>;
+  private webContents: WebContents;
+
+  constructor(webContents: WebContents) {
     this.sessions = {};
     this.webContents = webContents;
     this.initiate();
   }
 
-  initiate() {
+  private initiate() {
     ipcMain.on('wechatMessage', (event, messages) => {
       const promises = _.map(messages, message => this.handleMessage(message));
       Promise.all(promises);
     });
 
     ipcMain.on('get contact', (event, contacts) => {
-      this.settings.syncContacts(contacts.MemberList);
-      const menu = _.find(Menu.getApplicationMenu().items, { label: 'Settings' });
-      const subMenu = _.find(menu.submenu.items, { label: 'Auto Reply' });
-      subMenu.enabled = true;
+      settings.syncContacts(contacts.MemberList);
+      const menu = _.find(Menu.getApplicationMenu()!.items, { label: 'Settings' });
+      const subMenu = _.find(menu!.submenu.items, { label: 'Auto Reply' });
+      subMenu!.enabled = true;
     });
 
     ipcMain.on('loadAutoReplySettings', event => {
-      const contacts = this.settings.getContacts() || {};
+      const contacts = settings.getContacts() || {};
       const array = _.orderBy(_.values(contacts), ['RemarkPYQuanPin', 'PYQuanPin']);
       event.sender.send('loadAutoReplySettingsReply', array);
     });
 
     ipcMain.on('udpateAutoReplySettings', (event, contact) => {
-      this.settings.updateContact(contact);
+      settings.updateContact(contact);
     });
 
     ipcMain.on('getApiKey', event => {
-      event.sender.send('getApiKeyReply', this.settings.getApiKey());
+      event.sender.send('getApiKeyReply', settings.getApiKey());
     });
 
     ipcMain.on('setApiKey', (event, apiKey) => {
-      this.settings.setApiKey(apiKey);
+      console.log('setApiKey', apiKey);
+      settings.setApiKey(apiKey);
     });
   }
 
@@ -91,9 +96,9 @@ class MessageBus {
    * }
    * ```
    */
-  async handleMessage(message) {
+  private async handleMessage(message) {
     const { MsgType, Content, FromUserName } = message;
-    const contacts = this.settings.getContacts() || {};
+    const contacts = settings.getContacts() || {};
     const enabled = _.get(contacts[FromUserName], 'autoReply', false);
     if (!enabled) {
       return;
@@ -108,7 +113,7 @@ class MessageBus {
     let response;
     switch (MsgType) {
       case 1: // text message
-        response = await this.apiAi.request(Content, sessionId);
+        response = await request(Content, sessionId);
         if (_.get(response, 'status.code') === 200) {
           const speech = _.get(response, 'result.fulfillment.speech');
           if (_.trim(speech)) {
@@ -125,4 +130,4 @@ class MessageBus {
   }
 }
 
-module.exports = MessageBus;
+export default MessageBus;

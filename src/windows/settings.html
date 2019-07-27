@@ -271,7 +271,7 @@ td.text-right {
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script type="text/javascript">
   const { ipcRenderer, remote } = require('electron');
-  angular.module('wechat-me', [])
+  angular.module('wechat-ai', [])
   .controller('ContactController', ($scope) => {
     $scope.contacts = [];
     $scope.filterdContacts = [];
@@ -303,7 +303,7 @@ td.text-right {
 </script>
 </head>
 
-<body ng-app="wechat-me" ng-controller="ContactController">
+<body ng-app="wechat-ai" ng-controller="ContactController">
   <div>
     <table ng-if="contacts.length > 0" id="contactTable" style="responsive-table responsive-table-input-matrix">
         <tr>

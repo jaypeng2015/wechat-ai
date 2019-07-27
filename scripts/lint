@@ -1,5 +1,5 @@
 #!/bin/bash
 
 echo 'Starting linting ...'
-eslint -c .eslintrc ./src ./config --ext .js
+tslint -c tslint.json 'src/**/*.ts'
 echo 'Finished linting.'

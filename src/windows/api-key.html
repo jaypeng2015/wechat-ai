@@ -188,7 +188,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script type="text/javascript">
   const { ipcRenderer } = require('electron');
-  angular.module('wechat-me', [])
+  angular.module('wechat-ai', [])
   .controller('ApiKeyController', ($scope) => {
     const defaultApiKey = 'b6220b38aec344a4a900baa48e663a65';
     $scope.apiKey = defaultApiKey;
@@ -220,7 +220,7 @@
 </script>
 </head>
 
-<body ng-app="wechat-me" ng-controller="ApiKeyController">
+<body ng-app="wechat-ai" ng-controller="ApiKeyController">
   <div>
     <table style="margin: auto;">
       <tr>
