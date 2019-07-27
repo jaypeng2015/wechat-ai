@@ -77,7 +77,7 @@
   },
   "dependencies": {
     "apiai": "4.0.3",
-    "electron": "5.0.6",
+    "electron": "5.0.8",
     "electron-settings": "3.2.0",
     "lodash": "4.17.13",
     "uuid": "3.3.2"
