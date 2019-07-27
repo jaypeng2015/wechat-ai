@@ -52,7 +52,7 @@ class WeChatAI {
 
   private createWeChatWindow() {
     this.wechatWindow = new WeChatWindow();
-    this.wechatWindow.window.webContents.openDevTools();
+    // this.wechatWindow.window.webContents.openDevTools();
   }
 
   private createMessageBus() {
