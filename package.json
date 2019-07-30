@@ -64,7 +64,7 @@
     "@commitlint/config-conventional": "8.1.0",
     "@types/lodash": "4.14.136",
     "appdmg": "0.6.0",
-    "electron-packager": "14.0.3",
+    "electron-packager": "14.0.4",
     "husky": "3.0.2",
     "install": "0.13.0",
     "jest": "24.8.0",
