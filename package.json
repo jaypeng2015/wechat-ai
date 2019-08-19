@@ -80,6 +80,6 @@
     "electron": "5.0.8",
     "electron-settings": "3.2.0",
     "lodash": "4.17.15",
-    "uuid": "3.3.2"
+    "uuid": "3.3.3"
   }
 }
