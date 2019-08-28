@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/jaypeng2015/wechat-ai#readme",
   "engines": {
-    "node": "12.7.0",
+    "node": "12.9.1",
     "npm": "6.10.2"
   },
   "husky": {
