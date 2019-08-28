@@ -1,3 +1,11 @@
+
+**Deprecated**
+
+This repo is not actively maintained anymore and will stopped functioning soon because V1 of Dialogflow's API will be shut down on October 23, 2019.
+
+How I can find some time back to this at some stage.
+
+
 [![WeChat AI Icon](https://raw.githubusercontent.com/jaypeng2015/wechat-ai/master/assets/icons/png/wechat-ai.96x96.png)](https://jaypeng2015.github.io/wechat-ai/)
 
 # WeChat AI | 微信机器人
